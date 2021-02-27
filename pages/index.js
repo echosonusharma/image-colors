@@ -1,65 +1,67 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Clarifai from 'clarifai';
+import React, { useState } from 'react';
+import DisplayImg from '../components/DisplayImg';
+import InputImageURL from '../components/InputImageURL';
+import MainStyle from '../styles/Home.module.css';
+
+const app = new Clarifai.App({
+  apiKey: "c6b8b498babd4112ae5512af3f539e27"
+});
+
+
+
 
 export default function Home() {
+  const [searchInput, setSearchInput] = useState();
+  const [imgSrc, setImgSrc] = useState("");
+  const [colorData, setColorData] = useState([]);
+
+  const buttonDetect = () => {
+    setImgSrc(searchInput)
+    app.models.predict(
+      Clarifai.COLOR_MODEL,
+      searchInput)
+      .then(res => setColorData(res.outputs[0].data.colors))
+      .catch(err => console.error("Clarifai error", err));
+    setColorData([]);
+  }
+
+  function validURL(str) {
+    var pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
+      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
+      '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+      '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+      '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+      '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
+    return !!pattern.test(str);
+  }
+
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <>
+      <InputImageURL setSearchInput={setSearchInput} buttonDetect={buttonDetect} />
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+      <div className={MainStyle.result}>
+        <DisplayImg imgSrc={imgSrc} />
+        {
+          validURL(searchInput) &&
+          colorData.map((val, idx) => {
+            const { raw_hex, value } = val;
+            const { hex, name } = val.w3c;
+            return (
+              <div key={idx} className={MainStyle.values}>
+                <div className={MainStyle.hex}>
+                  <div style={{ width: "40px", height: "40px", backgroundColor: `${raw_hex}` }} />
+                  <h3 >{raw_hex}</h3>
+                </div>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
+                <h4>{(value * 100).toPrecision(4)}%</h4>
+                <h4>{hex}</h4>
+                <h4>{name}</h4>
+              </div>
+            )
+          })}
+      </div>
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
+    </>
   )
 }
