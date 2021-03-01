@@ -1,18 +1,16 @@
-import LayoutStyle from "../styles/Home.module.css";
+import Footer from "./Footer";
 import Meta from "./Meta";
-import Nav from "./Nav";
-
 
 const Layout = ({ children }) => {
 
     return (
         <>
             <Meta />
-            <Nav />
-            <div className={LayoutStyle.container}>
-                <main>
+            <div>
+                <main style={{ minHeight: "93vh" }}>
                     {children}
                 </main>
+                <Footer />
             </div>
         </>
     )

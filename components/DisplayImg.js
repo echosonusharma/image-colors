@@ -1,11 +1,9 @@
-import ImgStyle from "../styles/Input.module.css";
-
-const srcImg = ({ imgSrc }) => {
+const srcImg = ({ imgSrc, col }) => {
 
     return (
-        <div className={ImgStyle.ImageContainer}>
+        <div className="p-6 rounded-xl mr-6" style={{ backgroundColor: `${col}` }}>
             <img
-                className={ImgStyle.mainImage}
+                className="min-w-4/12 h-auto rounded-xl"
                 src={imgSrc}
                 alt=""
             />

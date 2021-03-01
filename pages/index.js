@@ -1,14 +1,14 @@
+import Emoji from 'a11y-react-emoji';
 import Clarifai from 'clarifai';
 import React, { useState } from 'react';
+import DisplayData from '../components/DisplayData';
 import DisplayImg from '../components/DisplayImg';
 import InputImageURL from '../components/InputImageURL';
-import MainStyle from '../styles/Home.module.css';
+
 
 const app = new Clarifai.App({
   apiKey: "c6b8b498babd4112ae5512af3f539e27"
 });
-
-
 
 
 export default function Home() {
@@ -17,14 +17,15 @@ export default function Home() {
   const [colorData, setColorData] = useState([]);
 
   const buttonDetect = () => {
-    setImgSrc(searchInput)
+    setImgSrc(searchInput);
+
     app.models.predict(
       Clarifai.COLOR_MODEL,
       searchInput)
       .then(res => setColorData(res.outputs[0].data.colors))
       .catch(err => console.error("Clarifai error", err));
     setColorData([]);
-  }
+  };
 
   function validURL(str) {
     var pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
@@ -34,34 +35,45 @@ export default function Home() {
       '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
       '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
     return !!pattern.test(str);
-  }
+  };
+
+  const findMax = () => {
+    let maxC = "";
+    var arr = new Array();
+    colorData.map((val) => {
+      arr.push((val.value * 100).toPrecision(2));
+      const max = Math.max(...arr);
+      if ((val.value * 100).toPrecision(2) == max) {
+        maxC = val.raw_hex;
+      }
+    })
+    return maxC;
+  };
+  const col = findMax();
 
   return (
     <>
+      <div className="flex justify-center pt-10 ">
+        <p className="w-1/2">
+          Hello there <Emoji symbol="🤗" label="hugging welcome" />, by providing an image link
+        below, you will get the most dominating colors with there respective hex color values,
+        composition percentage and even the closest possible
+        <a href="https://www.w3schools.com/colors/colors_names.asp"
+            target="_blank"
+            className="text-green-900 hover:text-blue-600 font-semibold"> w3c </a>
+         color name found with its hex value. Colors are a really important part
+         of any Web-design and this could help you that.</p>
+      </div>
       <InputImageURL setSearchInput={setSearchInput} buttonDetect={buttonDetect} />
 
-      <div className={MainStyle.result}>
-        <DisplayImg imgSrc={imgSrc} />
+      <div className="flex content-center justify-center">
+        <DisplayImg imgSrc={imgSrc} col={col} />
         {
           validURL(searchInput) &&
-          colorData.map((val, idx) => {
-            const { raw_hex, value } = val;
-            const { hex, name } = val.w3c;
-            return (
-              <div key={idx} className={MainStyle.values}>
-                <div className={MainStyle.hex}>
-                  <div style={{ width: "40px", height: "40px", backgroundColor: `${raw_hex}` }} />
-                  <h3 >{raw_hex}</h3>
-                </div>
-
-                <h4>{(value * 100).toPrecision(4)}%</h4>
-                <h4>{hex}</h4>
-                <h4>{name}</h4>
-              </div>
-            )
-          })}
+          <div className="grid  grid-cols-2 h-52 gap-4"  >
+            <DisplayData colorData={colorData} />
+          </div>}
       </div>
-
     </>
   )
 }

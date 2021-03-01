@@ -1,16 +1,14 @@
-import React from 'react';
-import InputStyle from "../styles/Input.module.css";
-
-
 const InputImage = ({ setSearchInput, buttonDetect }) => {
 
     return (
-        <div className={InputStyle.container}>
+        <div className="flex justify-center p-24 ">
             <input
                 placeholder="Enter image Link"
-                className={InputStyle.input}
+                className="w-2/4 border-2 border-black p-1 mr-4 px-6"
                 onChange={e => setSearchInput(e.target.value)} />
-            <button className={InputStyle.detect} onClick={() => buttonDetect()}>Detect</button>
+            <button
+                className="border-2 border-black p-2 w-40 text-lg font-medium text-white  bg-gray-700 shadow-sm"
+                onClick={() => buttonDetect()}>Detect</button>
 
         </div>
     )
