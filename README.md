@@ -12,9 +12,7 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-<video width="320" height="240" autoplay muted>
-   <source src="https://res.cloudinary.com/dnzeogrsh/video/upload/v1614622068/git-hub-readMe-gifs/image-colors_xy65qz.mp4" type="video/mp4">
-</video>
+<img src="https://media.giphy.com/media/IlP2KbR1RAfedMGZwj/giphy.gif" alt="gif-file" width="600px"/>
 
 
 ### added functionality
