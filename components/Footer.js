@@ -1,10 +1,9 @@
-import Emoji from 'a11y-react-emoji';
 
 const Footer = () => {
 
     return (
         <div className="flex justify-center content-end py-7">
-            <p>made with<Emoji symbol="💕" label="love" /> by
+            <p>made with ❤️ by
             <a href="https://github.com/echosonusharma"
                     target="_blank"
                     className="text-green-900 hover:text-blue-600 font-semibold"> Sonu Sharma</a></p>

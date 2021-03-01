@@ -1,9 +1,8 @@
-import Emoji from 'a11y-react-emoji';
 import Clarifai from 'clarifai';
 import React, { useState } from 'react';
-import DisplayData from '../components/DisplayData';
 import DisplayImg from '../components/DisplayImg';
 import InputImageURL from '../components/InputImageURL';
+import DisplayData from '../components/Response';
 
 
 const app = new Clarifai.App({
@@ -55,9 +54,9 @@ export default function Home() {
     <>
       <div className="flex justify-center pt-10 ">
         <p className="w-1/2">
-          Hello there <Emoji symbol="🤗" label="hugging welcome" />, by providing an image link
-        below, you will get the most dominating colors with there respective hex color values,
-        composition percentage and even the closest possible
+          Hello there 🤗, by providing an image link
+          below, you will get the most dominating colors with there respective hex color values,
+          composition percentage and even the closest possible
         <a href="https://www.w3schools.com/colors/colors_names.asp"
             target="_blank"
             className="text-green-900 hover:text-blue-600 font-semibold"> w3c </a>
@@ -76,4 +75,4 @@ export default function Home() {
       </div>
     </>
   )
-}
+};

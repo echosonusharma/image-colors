@@ -1,4 +1,4 @@
-const DisplayData = ({ colorData }) => {
+const ResponseData = ({ colorData }) => {
 
     return (
         <>
@@ -25,4 +25,4 @@ const DisplayData = ({ colorData }) => {
     )
 };
 
-export default DisplayData;
+export default ResponseData;
