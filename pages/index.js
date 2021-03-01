@@ -62,7 +62,7 @@ export default function Home() {
             target="_blank"
             className="text-green-900 hover:text-blue-600 font-semibold"> w3c </a>
          color name found with its hex value. Colors are a really important part
-         of any Web-design and this could help you that.</p>
+         of any Web-design and this could help you with that.</p>
       </div>
       <InputImageURL setSearchInput={setSearchInput} buttonDetect={buttonDetect} />
 
