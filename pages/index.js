@@ -53,7 +53,7 @@ export default function Home() {
   return (
     <>
       <div className="flex justify-center pt-10 " role="main">
-        <p className="w-1/2">
+        <div className="w-1/2">
           Hello there 🤗, by providing an image link
           below, you will get the most dominating colors with there respective hex color values,
           composition percentage and even the closest possible
@@ -61,11 +61,11 @@ export default function Home() {
             target="_blank"
             className="text-green-900 hover:text-blue-600 font-semibold"> w3c </a>
          color name found with its hex value. Colors are a really important part
-         of any Web-design and this could help you with that.</p>
+         of any Web-design and this could help you with that.</div>
       </div>
       <div className="flex justify-center pt-10 ">
         <div className="w-2/4">
-          <ul className="list-disc">
+          <ul className="list-disc list-inside">
             <li>Higher the image quality, more data it can process and evaluate.</li>
             <li>Avoid using PNG image format.</li>
           </ul>
