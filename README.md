@@ -12,7 +12,8 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-<img src="https://media.giphy.com/media/IlP2KbR1RAfedMGZwj/giphy.gif" alt="src" width="500px"/>
+<img src="https://media.giphy.com/media/IlP2KbR1RAfedMGZwj/giphy.gif" alt="gif-file" width="400px"/>
+
 
 ### added functionality
 
