@@ -52,7 +52,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex justify-center pt-10 ">
+      <div className="flex justify-center pt-10 " role="main">
         <p className="w-1/2">
           Hello there 🤗, by providing an image link
           below, you will get the most dominating colors with there respective hex color values,
@@ -65,8 +65,10 @@ export default function Home() {
       </div>
       <div className="flex justify-center pt-10 ">
         <div className="w-2/4">
-          <li>Higher the image quality, more data it can process and evaluate.</li>
-          <li>Avoid using PNG image format.</li>
+          <ul className="list-disc">
+            <li>Higher the image quality, more data it can process and evaluate.</li>
+            <li>Avoid using PNG image format.</li>
+          </ul>
         </div>
       </div>
       <InputImageURL setSearchInput={setSearchInput} buttonDetect={buttonDetect} />
