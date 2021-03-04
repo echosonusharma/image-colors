@@ -6,7 +6,7 @@ import DisplayData from '../components/Response';
 
 
 const app = new Clarifai.App({
-  apiKey: "c6b8b498babd4112ae5512af3f539e27"
+  apiKey: process.env.NEXT_PUBLIC_CLARIFY_API_KEY
 });
 
 
@@ -63,15 +63,23 @@ export default function Home() {
          color name found with its hex value. Colors are a really important part
          of any Web-design and this could help you with that.</p>
       </div>
+      <div className="flex justify-center pt-10 ">
+        <div className="w-2/4">
+          <li>Higher the image quality, more data it can process and evaluate.</li>
+          <li>Avoid using PNG image format.</li>
+        </div>
+      </div>
       <InputImageURL setSearchInput={setSearchInput} buttonDetect={buttonDetect} />
 
-      <div className="flex content-center justify-center">
+      <div className="flex content-center justify-center" >
         <DisplayImg imgSrc={imgSrc} col={col} />
-        {
-          validURL(searchInput) &&
-          <div className="grid  grid-cols-2 h-52 gap-4"  >
-            <DisplayData colorData={colorData} />
-          </div>}
+        <div style={{ minHeight: "75vh", maxHeight: "150vh" }} >
+          {
+            validURL(searchInput) &&
+            <div className="grid grid-cols-2 h-52 gap-4"  >
+              <DisplayData colorData={colorData} />
+            </div>}
+        </div>
       </div>
     </>
   )

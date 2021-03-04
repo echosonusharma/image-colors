@@ -7,13 +7,16 @@ const Layout = ({ children }) => {
         <>
             <Meta />
             <div>
-                <main style={{ minHeight: "93vh" }}>
+                <main >
                     {children}
+                    <Footer />
                 </main>
-                <Footer />
             </div>
+
         </>
     )
 };
 
 export default Layout;
+
+// 

@@ -2,7 +2,7 @@
 const Footer = () => {
 
     return (
-        <div className="flex justify-center content-end py-7">
+        <div className="flex justify-center py-7 relative">
             <p>made with ❤️ by
             <a href="https://github.com/echosonusharma"
                     target="_blank"
