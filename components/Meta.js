@@ -14,7 +14,7 @@ const Meta = ({ title, keywords, description }) => {
 }
 
 Meta.defaultProps = {
-    title: 'Image Colors',
+    title: 'Pixels',
     keywords: 'colors in image, color finder,get hex values from colour ',
     description: 'Get the dominant colours inside a image',
 }
