@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://http://anime-x-echosonusharma.vercel.app">
+  <a href="https://image-colors.vercel.app/">
     <img src="public\icons8-image-100.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -8,13 +8,13 @@
   <p align="center">
    Get the most dominating colors in a image.
     <br />
-    <a href="https://github.com/echosonusharma/image-colors"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/echosonusharma/pixels"><strong>Explore the docs »</strong></a>
     <br />
-    <a href="https://github.com/echosonusharma/image-colors">View Demo</a>
+    <a href="https://image-colors.vercel.app">View Demo</a>
     ·
-    <a href="https://github.com/echosonusharma/image-colors/issues">Report Bug</a>
+    <a href="https://github.com/echosonusharma/pixels/issues">Report Bug</a>
     ·
-    <a href="https://github.com/echosonusharma/image-colors/issues">Request Feature</a>
+    <a href="https://github.com/echosonusharma/pixels/issues">Request Feature</a>
   </p>
 </p>
 
